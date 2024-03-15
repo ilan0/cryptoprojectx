@@ -1,0 +1,42 @@
+
+.homepage {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .header {
+    margin-bottom: 20px;
+  }
+  
+  .navLinks {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .link {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .link:hover {
+    background-color: #0056b3;
+  }
+  .link {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    margin: 0 5px; /* Add some space between links */
+  }
+  
+  .link:hover {
+    background-color: #0056b3;
+  }

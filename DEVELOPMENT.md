@@ -48,3 +48,56 @@ This document outlines the key steps taken and features implemented.
 
 - Conducted manual testing of implemented features, especially the authentication flow, using Postman. This included testing the processes for signup and login, as well as verifying the protection of routes with JWT.
 
+## React Frontend Setup
+
+### Project Initialization
+
+- Bootstrapped a React application using Create React App, establishing a solid foundation for building the user interface.
+
+### Routing Setup
+
+- Integrated React Router for SPA functionality, defining routes for pages like Home, Login, Signup, and Dashboard.
+
+## Context for Global State Management
+
+### Authentication Context
+
+- Created an `AuthContext` using React's Context API to globally manage authentication state, facilitating easy access to user authentication status across the frontend.
+
+## Authentication Flow on the Frontend
+
+### Login and Signup Forms
+
+- Developed forms for user authentication, handling user input and submitting login/signup requests to the backend.
+
+### JWT Token Handling
+
+- Implemented logic to store JWT tokens in `localStorage` upon successful authentication, enabling persistent login sessions.
+
+### Authentication State Persistence
+
+- Ensured the user's authentication state is preserved when navigating between pages or after reloading the application, using the authentication context and token validation.
+
+## Dashboard Development
+
+### Enhanced Dashboard Page
+
+- Designed a professional and functional dashboard as the main interface for logged-in users, featuring:
+
+  - **Portfolio Overview**: Quick summary of the user's investments.
+  - **Investment Groups**: Access and management of user's investment groups.
+  - **Market Insights**: Updates and analytics on market trends relevant to the user's investments.
+
+### Responsive Design
+
+- Applied CSS modules for styling, ensuring the dashboard and other components are responsive and accessible across various devices.
+
+## Integration with Backend
+
+### Secure API Communication
+
+- Configured secure communication with the backend API, using JWT for authentication in API requests.
+
+### Dynamic Data Rendering
+
+- Implemented dynamic rendering of data in the frontend based on backend responses, ensuring a seamless user experience.

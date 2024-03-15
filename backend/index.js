@@ -2,12 +2,14 @@ require('dotenv').config(); // Load environment variables
 
 const express = require('express');
 const connectDB = require('./config/db'); // Database connection
-
+const cors = require('cors');
 // Routes
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 
 const app = express();
+app.use(cors());
+
 
 // Middlewares
 app.use(express.json()); // Middleware to parse JSON bodies
@@ -26,5 +28,5 @@ app.use((err, req, res, next) => {
 });
 
 // Server Port Configuration
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

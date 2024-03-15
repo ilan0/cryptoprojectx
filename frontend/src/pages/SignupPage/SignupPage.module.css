@@ -1,0 +1,9 @@
+/* Assuming this is in SignupPage.module.css */
+.successMessage {
+    color: #28a745; /* Green for success */
+  }
+  
+  .errorMessage {
+    color: #dc3545; /* Red for error */
+  }
+  

@@ -1,0 +1,66 @@
+/* src/pages/DashboardPage/DashboardPage.module.css */
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 100vh;
+  }
+  
+  .topNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #02203c;
+    color: white;
+  }
+  
+  .logo {
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  .navLinks {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navLinks li a,
+  .logoutButton {
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .header {
+    padding: 20px;
+    background-color: #f0f2f5;
+    text-align: center;
+  }
+  
+  .mainContent {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .portfolioOverview,
+  .investmentGroups,
+  .marketInsights {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  /* Adjust the media query as needed for your design */
+  @media (max-width: 768px) {
+    .mainContent {
+      grid-template-columns: 1fr;
+    }
+  }
+  

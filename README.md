@@ -3,6 +3,7 @@
 - **JWT Authentication**: Secure access using JSON Web Tokens.
 - **User Management**: Includes signup, login, profile update, and deletion functionalities.
 - **Protected Routes**: Ensures only authenticated users can access certain routes.
+- **Dynamic Dashboard**: A user-friendly dashboard providing quick access to investment groups, portfolio overviews, and market insights.
 
 
 ## Getting Started 🚀
@@ -12,11 +13,10 @@ Follow these instructions to get the project up and running on your local machin
 
 ### Prerequisites 📋
 
-Before you begin, ensure you have installed:
 
 - [Node.js](https://nodejs.org/en/download/)
 - npm or yarn (npm comes installed with Node.js)
-- [MongoDB](https://docs.mongodb.com/manual/installation/)
+- [MongoDB] Atlas for cloud
 - [Postman](https://www.postman.com/downloads/) for testing the API endpoints.
 
 ### Set Up 🛠
@@ -30,9 +30,10 @@ Before you begin, ensure you have installed:
     - Create a '.env' file in the root directory and add the following to it
         - JWT_SECRET=YourJWTSecretHere
         - MONGODB_URI=YourMongoDBUriHere
+        - PORT=3001
 
-### Run the backend
-From the root directory run 'node backend/index.js'
+### Run the backend and frontend
+From the root directory run 'npm start'
 
 ## Using the application with Postman
 
