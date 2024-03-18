@@ -1,36 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext'; // Adjust the path as necessary
 import LoginForm from '../../components/LoginForm';
+import { loginUser } from '../../api/authApi';
 import styles from './LoginPage.module.css';
-
-async function loginUser(credentials) {
-  return fetch('http://localhost:3001/api/auth/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(credentials),
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Login failed');
-    }
-    return response.json();
-  });
-} 
 
 function LoginPage() {
   const [feedbackMessage, setFeedbackMessage] = useState('');
-  const { currentUser, login } = useAuth(); // Use the login function from AuthContext
-  const navigate = useNavigate(); // For redirecting after successful login
+  const { currentUser, login } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Redirect users to the dashboard if they are already logged in
     if (currentUser) {
       navigate('/dashboard');
     }
-  }, [currentUser, navigate]); // Depend on currentUser and navigate
+  }, [currentUser, navigate]);
 
   const handleLogin = async (email, password) => {
     try {
@@ -40,9 +24,9 @@ function LoginPage() {
       });
   
       if (response.token) {
-        login(response.token); // Use AuthContext's login to set the token globally
+        login(response.token);
         setFeedbackMessage('Login successful! Redirecting...');
-        setTimeout(() => navigate('/dashboard'), 2000); // Redirect after a short delay to show the message
+        setTimeout(() => navigate('/dashboard'), 2000);
       } else {
         setFeedbackMessage('Failed to login. Please check your credentials.');
       }
@@ -51,7 +35,6 @@ function LoginPage() {
     }
   };
 
-  // Automatically clear feedback message after a delay if needed
   useEffect(() => {
     if (feedbackMessage) {
       const timer = setTimeout(() => setFeedbackMessage(''), 5000);
@@ -61,13 +44,18 @@ function LoginPage() {
 
   return (
     <div className={styles.loginPage}>
-      <h2>Login</h2>
-      {feedbackMessage && (
-        <p className={feedbackMessage.includes('successful') ? styles.successMessage : styles.errorMessage}>
-          {feedbackMessage}
+      <div className={styles.container}>
+        <h2>Login</h2>
+        {feedbackMessage && (
+          <p className={feedbackMessage.includes('successful') ? styles.successMessage : styles.errorMessage}>
+            {feedbackMessage}
+          </p>
+        )}
+        <LoginForm onLogin={handleLogin} />
+        <p className={styles.newUserPrompt}>
+          New here? <Link to="/signup">Create an account</Link>
         </p>
-      )}
-      <LoginForm onLogin={handleLogin} />
+      </div>
     </div>
   );
 }

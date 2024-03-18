@@ -6,6 +6,7 @@ const cors = require('cors');
 // Routes
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
+const groupRoutes = require('./routes/groupRoutes');
 
 const app = express();
 app.use(cors());
@@ -20,6 +21,7 @@ connectDB();
 // Use routes
 app.use('/api/auth', authRoutes); // Organize auth routes under a clear prefix
 app.use('/api/users', userRoutes); // Keep API routes prefixed for better organization
+app.use('/api/groups', groupRoutes);
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {

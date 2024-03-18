@@ -1,42 +1,82 @@
+.loginPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f8f9fa; /* Light background for a modern look */
+}
 
 .container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
-  .successMessage {
-    color: #28a745; /* Bootstrap green */
-  }
-  
-  .errorMessage {
-    color: #dc3545; /* Bootstrap red */
-  }
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  padding: 40px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input {
+  padding: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 16px; /* Larger font size for better readability */
+}
+
+.button {
+  background-color: #007bff;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px; /* Match input text size */
+  font-weight: bold;
+  transition: background-color 0.2s; /* Smooth transition for hover effect */
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.successMessage, .errorMessage {
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.successMessage {
+  background-color: #d4edda; /* Soft green background */
+  color: #155724; /* Dark green text */
+  border: 1px solid #c3e6cb;
+}
+
+.errorMessage {
+  background-color: #f8d7da; /* Soft red background */
+  color: #721c24; /* Dark red text */
+  border: 1px solid #f5c6cb;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+.newUserPrompt {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.newUserPrompt a {
+  color: #007bff; /* Adjust color to match your theme */
+  text-decoration: underline; /* Optional for a link effect */
+}

@@ -1,0 +1,64 @@
+/* NavigationBar.module.css */
+.navBar {
+    background-color: #333; /* Dark background for the nav bar */
+    overflow: hidden;
+    padding: 15px 0; /* Increase padding to make the bar thicker */
+    position: fixed; /* Make navigation bar fixed at the top */
+    top: 0;
+    width: 100%; /* Ensure nav bar extends full width */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Optional: adds shadow for depth */
+    z-index: 1000; /* Ensure nav bar is above other content */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+  .navList {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto; /* Center the navigation items might not be needed if aligning to the right */
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center; /* Vertically align items */
+    width: 100%; /* Ensure navList takes the full width of navBar */
+  }
+  
+  
+  .navItem {
+    margin: 0 15px; /* Increase margin for spacing between items */
+  }
+  
+  .navItem a, .navItem button {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px; /* Increase padding for a taller click area */
+    border-radius: 5px; /* Optional: rounds the corners of the links/buttons */
+  }
+  
+  .navItem button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Highlight for logout button or any special button */
+  .logoutButton, .signUpButton {
+    background-color: #007bff; /* Change as needed */
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px; /* Consistent padding with navItem links */
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  .logoutButton:hover, .signUpButton:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  .logo {
+    float: left; /* Keep the logo on the left */
+    color: white;
+    text-decoration: none;
+    margin-left: 20px; /* Add some margin to the left */
+  }
+  
+  
