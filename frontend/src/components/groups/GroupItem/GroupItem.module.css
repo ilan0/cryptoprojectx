@@ -1,0 +1,24 @@
+.groupItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .groupInfo h3 {
+    margin: 0;
+  }
+  
+  .groupInfo p {
+    margin: 5px 0 0;
+  }
+  
+  .settingsButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  

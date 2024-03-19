@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchGroupDetails, joinGroup, createInvestmentProposal, voteOnInvestmentProposal } from '../../api/groupApi'; // Make sure to implement these API calls
+import { fetchGroupDetails, joinGroup, createInvestmentProposal, voteOnInvestmentProposal, fetchInvestmentProposals, leaveGroup } from '../../api/groupApi'; // Make sure to implement these API calls
 import { useAuth } from '../../context/AuthContext';
 import InvestmentProposalForm from './InvestmentProposalForm'; // Assume you have this component for creating proposals
 

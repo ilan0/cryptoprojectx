@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Assuming you're using React Router for navigation
-import { fetchGroups } from '../../api/groupApi';
-import { useAuth } from '../../context/AuthContext';
+import { fetchGroups } from '../../../api/groupApi';
+import { useAuth } from '../../../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 function GroupList() {
   const { currentUser } = useAuth();
@@ -11,9 +11,8 @@ function GroupList() {
   useEffect(() => {
     const loadGroups = async () => {
       try {
-        // Assuming fetchGroups now directly returns the list of groups
-        const groups = await fetchGroups(currentUser.token);
-        setGroups(groups || []);
+        const groupsData = await fetchGroups(currentUser.token);
+        setGroups(groupsData || []);
       } catch (err) {
         setError('Failed to fetch groups. Please try again later.');
         console.error(err);
@@ -31,13 +30,15 @@ function GroupList() {
 
   return (
     <div>
-      <h2>Your Investment Groups</h2>
+
+      {/* Test Button Below */}
+      
       {groups.length > 0 ? (
         <ul>
           {groups.map((group) => (
             <li key={group._id}>
               <Link to={`/groups/${group._id}`}>{group.name}</Link> - {group.description}
-              {/* Additional details and actions can be added here */}
+              {/* Your existing logic to conditionally render settings link */}
             </li>
           ))}
         </ul>

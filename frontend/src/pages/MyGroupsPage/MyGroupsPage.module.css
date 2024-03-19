@@ -1,0 +1,57 @@
+.myGroupsPage {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .groupList {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+  }
+  
+  .groupItem {
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .groupItem:last-child {
+    border-bottom: none;
+  }
+  
+  .groupItem h2 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+  }
+  
+  .groupItem p {
+    margin: 5px 0 15px;
+    color: #666;
+    font-size: 16px;
+  }
+  
+  .button {
+    align-self: start;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* If you have a global style for buttons, you might not need .button */
+  

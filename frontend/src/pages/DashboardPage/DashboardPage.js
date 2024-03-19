@@ -2,32 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { fetchGroups } from '../../api/groupApi';
-import GroupList from '../../components/groups/GroupList'; // Assuming this component is updated to display groups more interactively
+import GroupList from '../../components/groups/GroupList/GroupList'; // Assuming this component is updated to display groups more interactively
+import GroupSearchDialog from '../../components/groups/GroupSearchDialog/GroupSearchDialog';
 import styles from './DashboardPage.module.css';
 
 function DashboardPage() {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
-  const [groups, setGroups] = useState([]);
+  const [showSearchDialog, setShowSearchDialog] = useState(false); // State to control the visibility of the search dialog
 
-  useEffect(() => {
-    const loadGroups = async () => {
-      try {
-        const fetchedGroups = await fetchGroups(currentUser.token);
-        setGroups(fetchedGroups);
-      } catch (error) {
-        console.error('Failed to load groups:', error);
-      }
-    };
-
-    if (currentUser.token) {
-      loadGroups();
-    }
-  }, [currentUser]);
-
-  // Navigate to the Create Group Page
-  const navigateToCreateGroup = () => {
-    navigate('/create-group');
+  // Function to toggle the search dialog visibility
+  const toggleSearchDialog = () => {
+    setShowSearchDialog(!showSearchDialog);
   };
 
   return (
@@ -40,24 +26,29 @@ function DashboardPage() {
       <main className={styles.mainContent}>
         <section className={styles.portfolioOverview}>
           <h2>Portfolio Overview</h2>
-          {/* Add widgets or information summarizing the user's investment portfolio */}
+          {/* Portfolio summary widgets */}
         </section>
 
         <section className={styles.investmentGroups}>
           <h2>Your Investment Groups</h2>
-          <button onClick={navigateToCreateGroup} className={styles.createGroupButton}>
+          <button onClick={() => navigate('/create-group')} className={styles.createGroupButton}>
             Create Group
           </button>
-          <GroupList groups={groups} />
-          {/* GroupList component is assumed to handle both displaying groups and providing
-              interactive elements like joining or viewing group details */}
+          <button onClick={toggleSearchDialog} className={styles.searchGroupButton}>
+            Search Groups
+          </button>
+          {/* GroupList component shows the user's groups */}
+          <GroupList />
         </section>
 
         <section className={styles.marketInsights}>
           <h2>Market Insights</h2>
-          {/* Include widgets or feeds for market news, trends, etc. */}
+          {/* Market news, trends, etc. */}
         </section>
       </main>
+
+      {/* Conditionally render the GroupSearchDialog based on state */}
+      {showSearchDialog && <GroupSearchDialog onClose={toggleSearchDialog} />}
     </div>
   );
 }

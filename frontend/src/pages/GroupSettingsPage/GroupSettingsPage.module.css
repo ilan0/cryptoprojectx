@@ -1,0 +1,85 @@
+.groupSettingsPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+label {
+  margin-bottom: 10px;
+  color: #666;
+  font-size: 16px;
+}
+
+input[type="text"],
+textarea,
+select {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.updateGroupButton {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.deleteGroupButton {
+  background-color: #f44336;
+  color: white;
+}
+
+.manageMembersSection {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.memberItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.memberAction {
+  margin-left: 10px;
+  background-color: #008CBA;
+  color: white;
+}
+
+/* Adjustments for responsiveness */
+@media (max-width: 600px) {
+  form,
+  .manageMembersSection {
+      width: 90%;
+  }
+}

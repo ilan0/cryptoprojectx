@@ -1,15 +1,5 @@
 const mongoose = require('mongoose');
-
-const investmentProposalSchema = new mongoose.Schema({
-    title: String,
-    description: String,
-    amount: Number,
-    cryptocurrency: String,
-    votesFor: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    votesAgainst: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-    status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending' },
-    createdAt: { type: Date, default: Date.now }
-});
+const InvestmentProposalSchema = require('./InvestmentProposal').schema; // Notice the change here
 
 const groupSchema = new mongoose.Schema({
     name: { type: String, required: true },
@@ -19,9 +9,22 @@ const groupSchema = new mongoose.Schema({
         userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
         role: { type: String, enum: ['admin', 'member'], default: 'member' },
     }],
-    investmentProposals: [investmentProposalSchema],
+    admins: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    investmentProposals: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'InvestmentProposal'
+  }],
     createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    createdAt: { type: Date, default: Date.now }
-});
+    createdAt: { type: Date, default: Date.now },
+    joinRequests: [{ 
+      userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, 
+      status: { type: String, enum: ['pending', 'accepted', 'rejected'], default: 'pending' } 
+  }],
+  invitations: [{ 
+      email: { type: String, required: true }, 
+      status: { type: String, enum: ['pending', 'accepted', 'rejected'], default: 'pending' } 
+  }]
+
+  });
 
 module.exports = mongoose.model('Group', groupSchema);
