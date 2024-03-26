@@ -1,48 +1,95 @@
+/* Base styling */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+}
+
 .dashboard {
   display: grid;
-  grid-template-columns: 3fr 1fr; /* 3:1 ratio for main content to sidebar */
-  grid-template-rows: auto 1fr;
-  gap: 1rem;
-  padding: 1rem;
+  grid-template-areas: 
+    "welcome welcome"
+    "portfolio notifications"
+    "groups notifications"
+    "market market";
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: auto auto auto 1fr;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 20px auto;
 }
 
-.header,
-.portfolioOverview,
-.investmentGroups,
-.marketInsights,
-.notifications {
-  background: #fff;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.welcomeBanner {
+  grid-area: welcome;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Header spans across all columns */
-.header {
-  grid-column: 1 / -1;
+/* Component boxes */
+.portfolioOverview, .groupSection, .notificationsColumn, .marketInsights {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
 }
 
-/* Sidebar notifications */
-.notifications {
-  grid-row: 2 / 3;
+/* Hover effect */
+.portfolioOverview:hover, .groupSection:hover, .notificationsColumn:hover, .marketInsights:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Main content sections */
+/* Headers */
+.dashboard h1, .dashboard h2 {
+  margin-top: 0;
+  color: #0056b3;
+}
+
+/* PortfolioOverview */
 .portfolioOverview {
-  grid-column: 1 / 2;
+  grid-area: portfolio;
 }
 
-.investmentGroups {
-  grid-column: 1 / 2;
+/* GroupSection */
+.groupSection {
+  grid-area: groups;
 }
 
+/* NotificationsColumn */
+.notificationsColumn {
+  grid-area: notifications;
+  overflow-y: auto;
+}
+
+/* MarketInsights */
 .marketInsights {
-  grid-column: 1 / 2;
+  grid-area: market;
 }
 
-/* You might need to adjust the height or overflow properties for scrolling */
-.investmentGroups,
-.marketInsights {
-  height: calc(50vh - 2rem); /* Example height */
-  overflow-y: auto; /* For scrolling if content is longer than the box */
+/* Buttons and links */
+button, a {
+  background-color: #007bff;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover, a:hover {
+  background-color: #0056b3;
+}
+
+/* Adjustments for specific buttons */
+.createGroupButton, .searchGroupButton {
+  margin-right: 10px;
 }

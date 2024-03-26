@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { fetchGroups } from '../../api/groupApi';
 import { useAuth } from '../../context/AuthContext';
-import GroupSearchDialog from '../../components/groups/GroupSearchDialog/GroupSearchDialog'; // Update the import path as necessary
-import styles from './MyGroupsPage.module.css'; // Create and import your CSS module
+import GroupSearchDialog from '../../components/groups/GroupSearchDialog/GroupSearchDialog';
+import styles from './MyGroupsPage.module.css';
 
 function MyGroupsPage() {
   const { currentUser } = useAuth();
@@ -16,22 +16,20 @@ function MyGroupsPage() {
   const loadMyGroups = async () => {
     setIsLoading(true);
     try {
-        const myGroups = await fetchGroups(currentUser.token); // Fetch groups with the current user's token
-        setGroups(myGroups); // Assuming the API returns an array of groups
+      const myGroups = await fetchGroups(currentUser.token);
+      setGroups(myGroups);
     } catch (error) {
-        console.error('Failed to fetch groups:', error);
-        // Optionally, handle the error by showing a message to the user
+      console.error('Failed to fetch groups:', error);
     } finally {
-        setIsLoading(false);
+      setIsLoading(false);
     }
-};
+  };
 
-useEffect(() => {
+  useEffect(() => {
     if (currentUser.token) {
-        loadMyGroups(); // Call the function to load groups
+      loadMyGroups();
     }
-}, [currentUser.token]); // This will re-run when currentUser.token changes
-
+  }, [currentUser.token]);
 
   const handleViewGroup = (groupId) => {
     navigate(`/groups/${groupId}`);
@@ -43,8 +41,12 @@ useEffect(() => {
 
   const handleCloseSearchDialog = () => {
     setShowSearchDialog(false);
-    // Reload groups in case a new group was joined
-    loadMyGroups();
+    loadMyGroups(); // Re-fetch groups after closing the search dialog
+  };
+
+  // Navigate to create group page
+  const handleCreateGroup = () => {
+    navigate('/create-group');
   };
 
   if (isLoading) {
@@ -54,7 +56,10 @@ useEffect(() => {
   return (
     <div className={styles.myGroupsPage}>
       <h1>My Groups</h1>
-      <button onClick={handleOpenSearchDialog} className={styles.addButton}>Add Group</button>
+      <div className={styles.actionButtons}>
+        <button onClick={handleOpenSearchDialog} className={styles.addButton}>Add Group</button>
+        <button onClick={handleCreateGroup} className={styles.createGroupButton}>Create Group</button>
+      </div>
       {showSearchDialog && <GroupSearchDialog onClose={handleCloseSearchDialog} />}
       {groups.length > 0 ? (
         <ul className={styles.groupList}>

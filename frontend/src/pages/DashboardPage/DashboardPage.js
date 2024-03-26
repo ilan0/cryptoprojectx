@@ -1,9 +1,9 @@
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
 import GroupList from '../../components/groups/GroupList/GroupList';
-import PortfolioSummary from '../../components/PortfolioSummary/PortfolioSummary'; // Example component
-import MarketInsights from '../../components/MarketInsights/MarketInsights'; // Example component
-import Notifications from '../../components/Notifications/Notifications'; // Assuming you have a Notifications component
+import PortfolioSummary from '../../components/PortfolioSummary/PortfolioSummary';
+import MarketInsights from '../../components/MarketInsights/MarketInsights';
+import Notifications from '../../components/Notifications/Notifications';
 import styles from './DashboardPage.module.css';
 
 function DashboardPage() {
@@ -11,34 +11,31 @@ function DashboardPage() {
 
   return (
     <div className={styles.dashboard}>
-      {/* Welcome header */}
-      <header className={styles.header}>
+      {/* Ensure welcomeBanner is at the top */}
+      <div className={styles.welcomeBanner}>
         <h1>Welcome, {currentUser.username || 'User'}!</h1>
-        <p>{currentUser.email}</p>
-      </header>
+        <p>Your personal dashboard</p>
+      </div>
 
-      {/* Total revenue and other widgets */}
-      <section className={styles.portfolioOverview}>
+      <div className={styles.portfolioOverview}>
         <PortfolioSummary />
-      </section>
+      </div>
 
-      {/* My Groups section */}
-      <section className={styles.investmentGroups}>
+      <div className={styles.groupSection}>
         <h2>My Groups</h2>
         <GroupList />
-      </section>
+      </div>
 
-      {/* Notifications sidebar */}
-      <aside className={styles.notifications}>
+      <div className={styles.notificationsColumn}>
         <Notifications />
-      </aside>
+      </div>
 
-      {/* Market Insights */}
-      <section className={styles.marketInsights}>
+      <div className={styles.marketInsights}>
         <MarketInsights />
-      </section>
+      </div>
     </div>
   );
 }
+
 
 export default DashboardPage;
