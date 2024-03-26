@@ -13,6 +13,7 @@ import MyGroupsPage from './pages/MyGroupsPage/MyGroupsPage';
 import GroupDetailsPage from './pages/GroupDetailsPage/GroupDetailsPage';
 import GroupSettingsPage from './pages/GroupSettingsPage/GroupSettingsPage';
 import GroupList from './components/groups/GroupList/GroupList';
+import NotificationsPage from './pages/NotificationsPage/NotificationsPage';
 import './assets/css/global.css';
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/about" element={<AboutPage />} /> {/* Add the route for AboutPage */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/notifications" element={<NotificationsPage />} />
           <Route path="/create-group" element={
             <PrivateRoute>
               <CreateGroupPage />

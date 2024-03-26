@@ -1,35 +1,40 @@
 import React, { useState } from 'react';
-import { searchPublicGroups, joinGroup } from '../../../api/groupApi';
+import { searchGroups, joinGroup, requestToJoinGroup } from '../../../api/groupApi'; // Adjust API imports as needed
 import { useAuth } from '../../../context/AuthContext';
-import styles from './GroupSearchDialog.module.css'; // Ensure the CSS module is properly linked
+import styles from './GroupSearchDialog.module.css';
 
 function GroupSearchDialog({ onClose }) {
   const { currentUser } = useAuth();
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const [searchMessage, setSearchMessage] = useState(''); // State to hold messages
+  const [searchMessage, setSearchMessage] = useState('');
 
-  const handleJoinGroup = async (groupId) => {
+  const handleJoinOrRequest = async (group) => {
     try {
-      await joinGroup(groupId, currentUser.token);
-      alert('Joined the group successfully'); // Or use a more sophisticated notification system
-      onClose(); // Close the dialog and optionally refresh the group list
+      if (group.privacy === 'public') {
+        await joinGroup(group._id, currentUser.token);
+        alert('Joined the group successfully');
+      } else {
+        await requestToJoinGroup(group._id, currentUser.token);
+        alert('Join request sent successfully');
+      }
+      onClose(); // Close the dialog and refresh the group list as needed
     } catch (error) {
-      console.error('Error joining the group:', error);
-      alert(error.message || 'Failed to join the group');
+      console.error('Error processing group action:', error);
+      alert(error.message || 'Failed to process your request');
     }
   };
 
   const handleSearch = async () => {
     try {
-      const response = await searchPublicGroups(searchQuery, currentUser.token);
-      // Assuming the API now returns an object with a message and groups array
+      // Assuming searchGroups can search for all groups without privacy filter
+      const response = await searchGroups(searchQuery, currentUser.token);
       setSearchMessage(response.message);
-      setSearchResults(response.groups || []); // Use the groups array if present, otherwise default to an empty array
+      setSearchResults(response.groups || []);
     } catch (error) {
       console.error('Error searching for groups:', error);
-      setSearchMessage(error.message || 'Failed to search for groups'); // Display the error message
-      setSearchResults([]); // Clear previous results
+      setSearchMessage(error.message || 'Failed to search for groups');
+      setSearchResults([]);
     }
   };
 
@@ -38,21 +43,23 @@ function GroupSearchDialog({ onClose }) {
       <div className={styles.dialog}>
         <input
           type="text"
-          placeholder="Search public groups"
+          placeholder="Search for groups"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className={styles.input}
         />
         <button onClick={handleSearch} className={styles.button}>Search</button>
-        {searchMessage && <p className={styles.message}>{searchMessage}</p>} 
+        {searchMessage && <p className={styles.message}>{searchMessage}</p>}
         <ul className={styles.resultsList}>
-        {searchResults.map(group => (
-          <li key={group._id} className={styles.resultItem}>
-            {group.name}
-            <button onClick={() => handleJoinGroup(group._id)}>Join Group</button>
-          </li>
-        ))}
-      </ul>
+          {searchResults.map(group => (
+            <li key={group._id} className={styles.resultItem}>
+              {group.name}
+              <button onClick={() => handleJoinOrRequest(group)}>
+                {group.privacy === 'public' ? 'Join Group' : 'Request to Join'}
+              </button>
+            </li>
+          ))}
+        </ul>
         <button onClick={onClose} className={styles.closeButton}>Close</button>
       </div>
     </div>

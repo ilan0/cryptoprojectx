@@ -1,0 +1,29 @@
+.marketInsights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .insightCard {
+    background: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    color: #000;
+    max-width: 300px;
+  }
+  
+  .insightImage {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .insightTitle {
+    font-size: 1rem;
+    margin: 10px 0;
+  }
+  
+  .insightSummary {
+    font-size: 0.875rem;
+  }
+  

@@ -16,8 +16,7 @@ router.patch('/me', auth, userController.updateUser);
 // Protected route to delete the logged-in user's account
 router.delete('/me', auth, userController.deleteUser);
 
-// Route to create a new user (Signup could be handled here or in a separate auth controller)
-router.post('/', userController.createUser);
+
 
 // ADMIN or privileged routes (Should also have some authorization middleware to check for admin privileges)
 // Route to get all users - Consider protecting this route and checking if the user has admin privileges

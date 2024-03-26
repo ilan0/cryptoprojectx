@@ -1,64 +1,64 @@
-/* NavigationBar.module.css */
 .navBar {
-    background-color: #333; /* Dark background for the nav bar */
-    overflow: hidden;
-    padding: 15px 0; /* Increase padding to make the bar thicker */
-    position: fixed; /* Make navigation bar fixed at the top */
-    top: 0;
-    width: 100%; /* Ensure nav bar extends full width */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.5); /* Optional: adds shadow for depth */
-    z-index: 1000; /* Ensure nav bar is above other content */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #2c2f33; /* Dark background color */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
 }
-  
-  .navList {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto; /* Center the navigation items might not be needed if aligning to the right */
-    display: flex;
-    justify-content: flex-end; /* Align items to the right */
-    align-items: center; /* Vertically align items */
-    width: 100%; /* Ensure navList takes the full width of navBar */
-  }
-  
-  
-  .navItem {
-    margin: 0 15px; /* Increase margin for spacing between items */
-  }
-  
-  .navItem a, .navItem button {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px; /* Increase padding for a taller click area */
-    border-radius: 5px; /* Optional: rounds the corners of the links/buttons */
-  }
-  
-  .navItem button {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  /* Highlight for logout button or any special button */
-  .logoutButton, .signUpButton {
-    background-color: #007bff; /* Change as needed */
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px 15px; /* Consistent padding with navItem links */
-    border-radius: 5px; /* Rounded corners */
-  }
-  
-  .logoutButton:hover, .signUpButton:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-  }
-  .logo {
-    float: left; /* Keep the logo on the left */
-    color: white;
-    text-decoration: none;
-    margin-left: 20px; /* Add some margin to the left */
-  }
-  
-  
+
+.logo {
+  color: #61dafb; /* Logo color */
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+.navList {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Space between items */
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
+  padding: 0.5rem 1rem;
+}
+
+.navItem a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navItem a:hover {
+  color: #61dafb; /* Highlight color on hover */
+}
+
+.logoutButton {
+  background-color: #ff414d; /* Logout button color */
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logoutButton:hover {
+  background-color: #e12d39; /* Darker shade on hover */
+}
+
+.signUpButton {
+  background-color: #4caf50; /* Sign up button color */
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.signUpButton:hover {
+  background-color: #43a047; /* Darker shade on hover */
+}

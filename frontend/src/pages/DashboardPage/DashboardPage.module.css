@@ -1,98 +1,48 @@
-/* src/pages/DashboardPage/DashboardPage.module.css */
 .dashboard {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    min-height: 100vh;
-  }
-  
-  .topNav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    background-color: #02203c;
-    color: white;
-  }
-  
-  .logo {
-    font-weight: bold;
-    font-size: 24px;
-  }
-  
-  .navLinks {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navLinks li a,
-  .logoutButton {
-    color: white;
-    text-decoration: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .header {
-    padding: 20px;
-    background-color: #f0f2f5;
-    text-align: center;
-  }
-  
-  .mainContent {
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-  
-  .portfolioOverview,
-  .investmentGroups,
-  .marketInsights {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  .addButton {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 12px;
-  }
-  
-  .investmentGroups, .portfolioOverview, .marketInsights {
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  }
-  
-  .groupList {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .groupItem {
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-  }
-  
-  /* Adjust the media query as needed for your design */
-  @media (max-width: 768px) {
-    .mainContent {
-      grid-template-columns: 1fr;
-    }
-  }
-  
+  display: grid;
+  grid-template-columns: 3fr 1fr; /* 3:1 ratio for main content to sidebar */
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.header,
+.portfolioOverview,
+.investmentGroups,
+.marketInsights,
+.notifications {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header spans across all columns */
+.header {
+  grid-column: 1 / -1;
+}
+
+/* Sidebar notifications */
+.notifications {
+  grid-row: 2 / 3;
+}
+
+/* Main content sections */
+.portfolioOverview {
+  grid-column: 1 / 2;
+}
+
+.investmentGroups {
+  grid-column: 1 / 2;
+}
+
+.marketInsights {
+  grid-column: 1 / 2;
+}
+
+/* You might need to adjust the height or overflow properties for scrolling */
+.investmentGroups,
+.marketInsights {
+  height: calc(50vh - 2rem); /* Example height */
+  overflow-y: auto; /* For scrolling if content is longer than the box */
+}
