@@ -1,3 +1,5 @@
+![CryptoProjectX product preview](cryptoprojectx-dashboard-preview.png)
+
 # CryptoProjectX
 
 > A full-stack web application for organizing crypto investment groups, tracking portfolio activity, and giving members a secure, personalized dashboard.
